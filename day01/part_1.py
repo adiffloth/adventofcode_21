@@ -1,10 +1,10 @@
 lines = [int(x) for x in open('day01/0.in').read().splitlines()]
 
-print(f'Part 1: {sum([1 for x in range(len(lines) - 1) if lines[x + 1] > lines[x]])}')
+print(f'Part 1: {sum([lines[x + 1] > lines[x] for x in range(len(lines) - 1)])}')
 
 depths = [sum(lines[i:i + 3]) for i in range(len(lines) - 2)]
 
-print(f'Part 2: {sum([1 for x in range(len(depths) - 1) if depths[x + 1] > depths[x]])}')
+print(f'Part 2: {sum([depths[x + 1] > depths[x] for x in range(len(depths) - 1)])}')
 
 
 # This is more clever. There is no need to calculate the rolling windows.

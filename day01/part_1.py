@@ -4,7 +4,7 @@ print(f'Part 1: {sum([lines[x + 1] > lines[x] for x in range(len(lines) - 1)])}'
 
 depths = [sum(lines[i:i + 3]) for i in range(len(lines) - 2)]
 
-print(f'Part 2: {sum((depths[x + 1] > depths[x] for x in range(len(depths) - 1)))}')
+print(f'Part 2: {sum(depths[x + 1] > depths[x] for x in range(len(depths) - 1))}')
 
 
 # This is more clever. There is no need to calculate the rolling windows.
@@ -14,5 +14,5 @@ print(f'Part 2: {sum((depths[x + 1] > depths[x] for x in range(len(depths) - 1))
 # B B  -> cancels
 # C C  -> cancels
 #   D  -> just compare A and D
-print(f'Part 1: {sum((b > a) for (a, b) in zip(lines, lines[1:]))}')
-print(f'Part 2: {sum((b > a) for (a, b) in zip(lines, lines[3:]))}')
+print(f'Part 1: {sum(b > a for (a, b) in zip(lines, lines[1:]))}')
+print(f'Part 2: {sum(b > a for (a, b) in zip(lines, lines[3:]))}')

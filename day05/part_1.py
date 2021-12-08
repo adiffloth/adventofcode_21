@@ -18,4 +18,4 @@ for line in lines:
     for point in make_line(*line[0], *line[1]):
         points[point] += 1
 
-print(f'Part 1: {sum((1 for cnt in points.values() if cnt >= 2))}')
+print(f'Part 1: {sum(1 for cnt in points.values() if cnt >= 2)}')

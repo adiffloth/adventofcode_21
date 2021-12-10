@@ -1,8 +1,10 @@
 import statistics
+# lines = [list(x) for x in open('day10/0.in').read().splitlines()]
 lines = [list(x) for x in open('day10/0.in').read().splitlines()]
 
 pairs = {')': '(', ']': '[', '}': '{', '>': '<'}
 points = {'(': 1, '[': 2, '{': 3, '<': 4}
+openers = set(pairs.values())
 
 scores = []
 for line in lines:
@@ -10,7 +12,7 @@ for line in lines:
     corrupt = False
     stack = [line[0]]
     for c in line[1:]:
-        if c in pairs.values():  # Opening marker
+        if c in openers:  # Opening marker
             stack.append(c)
         elif stack.pop() != pairs[c]:  # Incorrect close
             corrupt = True

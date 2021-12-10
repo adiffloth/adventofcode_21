@@ -25,18 +25,20 @@ def neighbors(y, x):
     return neighbs
 
 def visit_point(y, x):
+    if lines[y][x] == 9 or (y, x) in visited:
+        return 0
+
     basin_size = 0
-    if lines[y][x] != 9 and (y, x) not in visited:  # New point that needs to be explored
-        stack = [(y, x)]
-        visited.add((y, x))
-        while stack:  # Flood fill with stack
-            curr_y, curr_x = stack.pop()
-            basin_size += 1
-            neighbs = neighbors(curr_y, curr_x)
-            for neighb_y, neighb_x in neighbs:
-                if lines[neighb_y][neighb_x] != 9 and (neighb_y, neighb_x) not in visited:
-                    stack.append((neighb_y, neighb_x))
-                    visited.add((neighb_y, neighb_x))
+    stack = [(y, x)]
+    visited.add((y, x))
+    while stack:  # Flood fill with stack
+        curr_y, curr_x = stack.pop()
+        basin_size += 1
+        neighbs = neighbors(curr_y, curr_x)
+        for neighb_y, neighb_x in neighbs:
+            if lines[neighb_y][neighb_x] != 9 and (neighb_y, neighb_x) not in visited:
+                stack.append((neighb_y, neighb_x))
+                visited.add((neighb_y, neighb_x))
     return basin_size
 
 visited = set()

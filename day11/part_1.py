@@ -6,7 +6,7 @@ def neighbors_8(y, x):
     deltas = [(1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0), (-1, -1), (0, -1), (1, -1)]
     neighbs = []
     for d in deltas:
-        if 0 <= y + d[0] < len(lines) and 0 <= x + d[1] < len(lines[0]):
+        if 0 <= y + d[0] < lines.shape[0] and 0 <= x + d[1] < lines.shape[1]:
             neighbs.append((y + d[0], x + d[1]))
     return neighbs
 
@@ -36,9 +36,7 @@ for _ in range(steps):
         for i in range(lines.shape[1]):
             visit_pt(j, i)
 
-    for flashed_y, flashed_x in flashed:
-        lines[flashed_y][flashed_x] = 0
-
+    lines[lines > 9] = 0
     num_flashed += len(flashed)
 
 print(f'Part 1: {num_flashed}')

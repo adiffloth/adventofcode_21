@@ -1,0 +1,1 @@
+lines = [list(x) for x in open('day10/0.in').read().splitlines()]

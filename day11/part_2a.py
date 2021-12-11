@@ -25,10 +25,10 @@ def visit_pt(y, x):
                 flashed.add((neighb_y, neighb_x))
                 stack.append((neighb_y, neighb_x))
 
-steps = 100
-num_flashed = 0
-
-for _ in range(steps):
+step = 0
+flashed = set()
+while len(flashed) < 100:
+    step += 1
     flashed = set()
     lines += 1  # All octopus energies increase by 1
 
@@ -39,6 +39,4 @@ for _ in range(steps):
     for flashed_y, flashed_x in flashed:
         lines[flashed_y][flashed_x] = 0
 
-    num_flashed += len(flashed)
-
-print(f'Part 1: {num_flashed}')
+print(f'Part 2: {step}')

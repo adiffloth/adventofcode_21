@@ -3,7 +3,7 @@ from collections import defaultdict
 def paths(curr_node, visited, doubled):
     if curr_node == 'end':
         return 1
-    if curr_node.islower() and curr_node in visited:
+    if curr_node in small_caves and curr_node in visited:
         if not doubled:
             doubled = True
         else:
@@ -23,6 +23,7 @@ for a, b in lines:
         reachables[a].add(b)
     if a != 'start':
         reachables[b].add(a)
+small_caves = {c for c in reachables if c.islower()}
 
 print(f'Part 1: {paths("start", set(), True)}')
 print(f'Part 2: {paths("start", set(), False)}')

@@ -1,5 +1,7 @@
 from collections import defaultdict
+from functools import cache
 
+@cache
 def paths(curr_node, visited, doubled):
     if curr_node == 'end':
         return 1
@@ -25,5 +27,5 @@ for a, b in lines:
         reachables[b].add(a)
 small_caves = {c for c in reachables if c.islower()}
 
-print(f'Part 1: {paths("start", set(), True)}')
-print(f'Part 2: {paths("start", set(), False)}')
+print(f'Part 1: {paths("start", frozenset(), True)}')
+print(f'Part 2: {paths("start", frozenset(), False)}')

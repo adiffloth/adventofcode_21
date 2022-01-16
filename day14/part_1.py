@@ -1,5 +1,6 @@
 from collections import Counter, defaultdict
-lines = [x for x in open('day14/0.in').read().splitlines()]
+
+lines = [x for x in open('day14/1.in').read().splitlines()]
 
 template = lines[0]
 rules = {r.split(' -> ')[0]: r.split(' -> ')[1] for r in lines[2:]}

@@ -15,20 +15,16 @@ def get_literal_value(idx):
 
 
 def operate(values, type_id):
-    if type_id == 0:
-        return sum(values)
-    if type_id == 1:
-        return np.prod(values)
-    if type_id == 2:
-        return min(values)
-    if type_id == 3:
-        return max(values)
-    if type_id == 5:
-        return int(values[0] > values[1])
-    if type_id == 6:
-        return int(values[0] < values[1])
-    if type_id == 7:
-        return int(values[0] == values[1])
+    ops = [sum,
+           np.prod,
+           min,
+           max,
+           None,  # Literal
+           lambda x: int(x[0] > x[1]),
+           lambda x: int(x[0] < x[1]),
+           lambda x: int(x[0] == x[1])]
+    return ops[type_id](values)
+
 
 def process_packet(idx):
     idx += 3
